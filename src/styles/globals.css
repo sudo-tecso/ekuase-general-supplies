@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F8F5F0;
+  --foreground: #1a1a2e;
+  
+  --primary: #1a1a2e;
+  --primary-foreground: #F8F5F0;
+  
+  --accent: #E8500A;
+  --accent-foreground: #ffffff;
+  
+  --logo-gold: #FFB01F;
+  --logo-black: #000000;
+  
+  --secondary: #8A8A8A;
+  --secondary-foreground: #ffffff;
+  
+  --muted: #e5e5e5;
+  --muted-foreground: #8A8A8A;
+  
+  --success: #2ECC71;
+  --success-foreground: #ffffff;
+  
+  --danger: #ef4444;
+  --danger-foreground: #ffffff;
+  
+  --card: #ffffff;
+  --card-foreground: #1a1a2e;
+  
+  --border: #e2e2e2;
+  --input: #f1f1f1;
+  --ring: #E8500A;
+  
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:opacity-90 px-4 py-2 rounded-md transition-colors;
+  }
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:opacity-90 px-4 py-2 rounded-md transition-colors;
+  }
+}
