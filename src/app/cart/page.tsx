@@ -173,7 +173,7 @@ export default function CartPage() {
                   <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
                 </div>
                 <h4 className="text-slate-900 font-bold text-sm">{item.name}</h4>
-                <p className="text-primary font-bold text-xs mt-1">${item.price}</p>
+                <p className="text-primary font-bold text-xs mt-1">{formatCurrency(item.price)}</p>
               </div>
             ))}
           </div>

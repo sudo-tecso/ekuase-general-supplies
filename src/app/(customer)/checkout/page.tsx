@@ -244,7 +244,7 @@ export default function CheckoutPage() {
                       </div>
                       <div>
                         <p className="font-bold text-slate-900 tracking-tight">Home Delivery</p>
-                        <p className="text-xs text-slate-500">+ GHS 50.00 Fee</p>
+                        <p className="text-xs text-slate-500">+ {formatCurrency(50.00)} Fee</p>
                       </div>
                       {deliveryMethod === "DELIVERY" && <Check className="ml-auto w-5 h-5 text-primary" />}
                     </label>
@@ -437,7 +437,7 @@ export default function CheckoutPage() {
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
                   </div>
                   <h4 className="text-slate-900 font-bold text-sm">{item.name}</h4>
-                  <p className="text-primary font-bold text-xs mt-1">${item.price}</p>
+                  <p className="text-primary font-bold text-xs mt-1">{formatCurrency(item.price)}</p>
                 </div>
               ))}
             </div>

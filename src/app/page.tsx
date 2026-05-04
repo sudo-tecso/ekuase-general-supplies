@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AddToCartButton } from "@/components/storefront/AddToCartButton";
+import { formatCurrency } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -98,7 +99,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-black text-slate-900 dark:text-slate-100">$845.00</span>
+                  <span className="text-2xl font-black text-slate-900 dark:text-slate-100">{formatCurrency(845.00)}</span>
                   <span className="text-slate-500 text-sm font-medium">/ton</span>
                 </div>
                 <AddToCartButton 
@@ -127,7 +128,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-black text-slate-900 dark:text-slate-100">$6.50</span>
+                  <span className="text-2xl font-black text-slate-900 dark:text-slate-100">{formatCurrency(6.50)}</span>
                   <span className="text-slate-500 text-sm font-medium">/bag</span>
                 </div>
                 <AddToCartButton 
@@ -156,7 +157,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-black text-slate-900 dark:text-slate-100">$2.20</span>
+                  <span className="text-2xl font-black text-slate-900 dark:text-slate-100">{formatCurrency(2.20)}</span>
                   <span className="text-slate-500 text-sm font-medium">/sq.ft</span>
                 </div>
                 <AddToCartButton 
@@ -185,7 +186,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-black text-slate-900 dark:text-slate-100">$18.40</span>
+                  <span className="text-2xl font-black text-slate-900 dark:text-slate-100">{formatCurrency(18.40)}</span>
                   <span className="text-slate-500 text-sm font-medium">/unit</span>
                 </div>
                 <AddToCartButton 
