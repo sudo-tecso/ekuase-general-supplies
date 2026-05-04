@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f49d25",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#221a10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen">
+<div class="relative flex flex-col w-full min-h-screen overflow-x-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 lg:px-20 py-4 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<img alt="Ekuase General Supplies Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0uhyBhdKvTm-96rs759b7PpUhqKn8_zl7JGXSJTG5X08LLPaOJ1xUsVzbGXdue4Is9ZNIgcGH7Va7p5Xw_uk8u2uii5BUYnZ7Ut-gOopzaqfzaTZZ0DQAw-HTr7vja4AQh1_gGXRr01zxnY10I8d2gxvrkBe95yP4cqZiaPan-YMH-i3SZddwulAoFj68bX4pbgW_hBeNWhRRPqa1W-pbkBtd3R1Q_7BaJNSBrDXe8Qw3y3avhV4UIEv1DLMawMCPrl0zxs7QnJdV4I"/>
+<h2 class="text-slate-900 dark:text-white text-xl font-black leading-tight tracking-tight">Ekuase General Supplies</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4 rounded-l-lg">
+<img alt="Ekuase General Supplies Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0uhyBhdKvTm-96rs759b7PpUhqKn8_zl7JGXSJTG5X08LLPaOJ1xUsVzbGXdue4Is9ZNIgcGH7Va7p5Xw_uk8u2uii5BUYnZ7Ut-gOopzaqfzaTZZ0DQAw-HTr7vja4AQh1_gGXRr01zxnY10I8d2gxvrkBe95yP4cqZiaPan-YMH-i3SZddwulAoFj68bX4pbgW_hBeNWhRRPqa1W-pbkBtd3R1Q_7BaJNSBrDXe8Qw3y3avhV4UIEv1DLMawMCPrl0zxs7QnJdV4I"/>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:ring-0 h-full placeholder:text-slate-400 px-4 rounded-r-lg text-sm font-normal" placeholder="Search materials, tools..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Materials</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Tools</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Equipment</a>
+<a class="text-slate-600 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Projects</a>
+</nav>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200">
+<img alt="Ekuase General Supplies Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0uhyBhdKvTm-96rs759b7PpUhqKn8_zl7JGXSJTG5X08LLPaOJ1xUsVzbGXdue4Is9ZNIgcGH7Va7p5Xw_uk8u2uii5BUYnZ7Ut-gOopzaqfzaTZZ0DQAw-HTr7vja4AQh1_gGXRr01zxnY10I8d2gxvrkBe95yP4cqZiaPan-YMH-i3SZddwulAoFj68bX4pbgW_hBeNWhRRPqa1W-pbkBtd3R1Q_7BaJNSBrDXe8Qw3y3avhV4UIEv1DLMawMCPrl0zxs7QnJdV4I"/>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200">
+<img alt="Ekuase General Supplies Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0uhyBhdKvTm-96rs759b7PpUhqKn8_zl7JGXSJTG5X08LLPaOJ1xUsVzbGXdue4Is9ZNIgcGH7Va7p5Xw_uk8u2uii5BUYnZ7Ut-gOopzaqfzaTZZ0DQAw-HTr7vja4AQh1_gGXRr01zxnY10I8d2gxvrkBe95yP4cqZiaPan-YMH-i3SZddwulAoFj68bX4pbgW_hBeNWhRRPqa1W-pbkBtd3R1Q_7BaJNSBrDXe8Qw3y3avhV4UIEv1DLMawMCPrl0zxs7QnJdV4I"/>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-primary text-white">
+<img alt="Ekuase General Supplies Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0uhyBhdKvTm-96rs759b7PpUhqKn8_zl7JGXSJTG5X08LLPaOJ1xUsVzbGXdue4Is9ZNIgcGH7Va7p5Xw_uk8u2uii5BUYnZ7Ut-gOopzaqfzaTZZ0DQAw-HTr7vja4AQh1_gGXRr01zxnY10I8d2gxvrkBe95yP4cqZiaPan-YMH-i3SZddwulAoFj68bX4pbgW_hBeNWhRRPqa1W-pbkBtd3R1Q_7BaJNSBrDXe8Qw3y3avhV4UIEv1DLMawMCPrl0zxs7QnJdV4I"/>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto w-full px-6 lg:px-20 py-10">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-6">
+<a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:underline" href="#">Home</a>
+<span class="material-symbols-outlined text-slate-400 text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-slate-100 text-sm font-semibold">Shopping Cart</span>
+</div>
+<div class="flex flex-col lg:flex-row gap-10">
+<!-- Main Content: Cart Items -->
+<div class="flex-1 flex flex-col gap-8">
+<div>
+<h1 class="text-slate-900 dark:text-white text-4xl font-black tracking-tight mb-2">Your Cart</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base">Items are grouped by warehouse availability for optimized logistics.</p>
+</div>
+<!-- Shipment Group 1 -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center gap-3 p-4 bg-slate-100 dark:bg-slate-800/50 rounded-lg border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary">warehouse</span>
+<div class="flex flex-col">
+<h3 class="text-slate-900 dark:text-white font-bold leading-tight">Shipment 1: Main Warehouse</h3>
+<p class="text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider font-bold">Standard Delivery (2-3 Business Days)</p>
+</div>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<!-- Item 1 -->
+<div class="flex flex-col sm:flex-row gap-4 p-5 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-24 shrink-0 border border-slate-100 dark:border-slate-800" data-alt="Stacked bags of professional grade cement" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBLCr15xEqyCEewPMRgug9G6JehR7ZYF1u11ASiIEF6Zfo6lKr8mHkzJaC4o9LN7oUAfg37XtzMui3zdFX5ZJrLtQ4BgyHPlxjHjj68qoKixQBESV_qGFc_x90FQ2S0QHQdmOGs6YMWjnie1gSubsuEAjwuDLzJ6T8ab-12ei9aUk8Y9Vv69fYoIrayjjYnhVGqwUKwG0YB-xv1Bdw4oAY_72P0ObWIMvlRgmx-SZkAl-vb5PDJf_4mwU9Y3ExVdzcSbt6qPcmIvsVr");'></div>
+<div class="flex flex-1 flex-col gap-1 text-center sm:text-left">
+<p class="text-slate-900 dark:text-white text-lg font-bold">Premium Portland Cement</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">SKU: BC-50KG-P1</p>
+<p class="text-primary font-bold mt-1">$12.50 <span class="text-slate-400 font-normal text-xs">/ unit</span></p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800 p-1 rounded-lg">
+<button class="flex h-8 w-8 items-center justify-center rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm hover:bg-slate-100">-</button>
+<input class="w-8 text-center bg-transparent border-none p-0 text-slate-900 dark:text-white font-bold focus:ring-0" type="number" value="12"/>
+<button class="flex h-8 w-8 items-center justify-center rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm hover:bg-slate-100">+</button>
+</div>
+<p class="text-slate-900 dark:text-white font-black text-lg min-w-[80px] text-right">$150.00</p>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col sm:flex-row gap-4 p-5 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-24 shrink-0 border border-slate-100 dark:border-slate-800" data-alt="Galvanized steel rebar for construction" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAlGElopkEUdgu0smMtMs-fIds_8v1f3fbZ1NqsK_OOjZ-rRW-w-B5ZDHpJsHRhP8rqxIYDvzP9CpUg5xACVtzBCEGGl7u1Nhxf83FX4gX22hvwfBtZaTDl-CbyFaq24xbyq1BDYMAWPeiHJOQkU-nXjg5vQMzItqTFNWV5lmAik6FWiub_jt0TY_bbV4dYMcjfAL_36FyoLklZwKT0mjY7lUPNTqYoo0YgfYFc6s83y9QEMSEK7Zq45s4ZKlW4RfaB1bxaG5boXOTm");'></div>
+<div class="flex flex-1 flex-col gap-1 text-center sm:text-left">
+<p class="text-slate-900 dark:text-white text-lg font-bold">Reinforcing Steel Rebar (12mm)</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">SKU: ST-RB-12-6M</p>
+<p class="text-primary font-bold mt-1">$8.75 <span class="text-slate-400 font-normal text-xs">/ unit</span></p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800 p-1 rounded-lg">
+<button class="flex h-8 w-8 items-center justify-center rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm hover:bg-slate-100">-</button>
+<input class="w-8 text-center bg-transparent border-none p-0 text-slate-900 dark:text-white font-bold focus:ring-0" type="number" value="50"/>
+<button class="flex h-8 w-8 items-center justify-center rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm hover:bg-slate-100">+</button>
+</div>
+<p class="text-slate-900 dark:text-white font-black text-lg min-w-[80px] text-right">$437.50</p>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Shipment Group 2 -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center gap-3 p-4 bg-slate-100 dark:bg-slate-800/50 rounded-lg border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<div class="flex flex-col">
+<h3 class="text-slate-900 dark:text-white font-bold leading-tight">Shipment 2: North Warehouse</h3>
+<p class="text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider font-bold">Express Delivery (Next Day)</p>
+</div>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<!-- Item 3 -->
+<div class="flex flex-col sm:flex-row gap-4 p-5 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-24 shrink-0 border border-slate-100 dark:border-slate-800" data-alt="High-performance industrial impact drill" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB1xuaO9bGe0CK_9RHsDMXNtNDD-y-YbUQyCgV2X46-LOVIQHF31QRqOCITqK9p1NxKwNElzpz1P0Rz5juacLj625MW1RKPZuS80mkfZkGYdD-elMkLwr7XAv74dzzWmmslziPjPOneEsjQSvolMvd9a6umI24yPR9gmz3lL9tEYXwjugVU41Et_bg8htNw0ZecaZD9l2so7Mmmm8yVxbfWIrE7aFbpeHCaJV2IcYrGabFXDHxKu2VTjX53U4hpTuPOE_bWr_j5sg1D");'></div>
+<div class="flex flex-1 flex-col gap-1 text-center sm:text-left">
+<p class="text-slate-900 dark:text-white text-lg font-bold">Industrial Impact Drill VSR</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">SKU: TL-ID-20V</p>
+<p class="text-primary font-bold mt-1">$215.00 <span class="text-slate-400 font-normal text-xs">/ unit</span></p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800 p-1 rounded-lg">
+<button class="flex h-8 w-8 items-center justify-center rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm hover:bg-slate-100">-</button>
+<input class="w-8 text-center bg-transparent border-none p-0 text-slate-900 dark:text-white font-bold focus:ring-0" type="number" value="1"/>
+<button class="flex h-8 w-8 items-center justify-center rounded-md bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm hover:bg-slate-100">+</button>
+</div>
+<p class="text-slate-900 dark:text-white font-black text-lg min-w-[80px] text-right">$215.00</p>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Sidebar: Summary -->
+<aside class="lg:w-96 flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg border border-slate-100 dark:border-slate-800 sticky top-24">
+<h2 class="text-slate-900 dark:text-white text-2xl font-black mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">Order Summary</h2>
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex justify-between items-center text-slate-600 dark:text-slate-400">
+<span class="text-sm font-medium">Subtotal (3 items)</span>
+<span class="text-slate-900 dark:text-white font-bold">$802.50</span>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-slate-500 dark:text-slate-400">
+<span class="text-xs">Shipment 1 Delivery</span>
+<span class="text-slate-900 dark:text-white text-xs font-semibold">$45.00</span>
+</div>
+<div class="flex justify-between items-center text-slate-500 dark:text-slate-400">
+<span class="text-xs">Shipment 2 Delivery (Express)</span>
+<span class="text-slate-900 dark:text-white text-xs font-semibold">$22.00</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-slate-600 dark:text-slate-400">
+<span class="text-sm font-medium">Estimated Taxes</span>
+<span class="text-slate-900 dark:text-white font-bold">$64.20</span>
+</div>
+<div class="border-t border-dashed border-slate-200 dark:border-slate-700 my-2"></div>
+<div class="flex justify-between items-center">
+<span class="text-lg font-black text-slate-900 dark:text-white uppercase tracking-tight">Total</span>
+<span class="text-2xl font-black text-primary">$933.70</span>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-white py-4 rounded-lg font-black text-lg shadow-md transition-all active:scale-[0.98]">
+                                PROCEED TO CHECKOUT
+                            </button>
+<p class="text-center text-slate-400 text-xs flex items-center justify-center gap-2"><span class="material-symbols-outlined text-sm">lock</span> Secure checkout by Ekuase General Supplies</p>
+</div>
+<!-- Promotion -->
+<div class="mt-8 p-4 bg-primary/10 rounded-lg border border-primary/20">
+<p class="text-primary text-xs font-bold uppercase mb-2">Apply Promo Code</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-white dark:bg-slate-800 border-none rounded-md text-sm px-3 focus:ring-primary" placeholder="Enter code" type="text"/>
+<button class="bg-slate-900 dark:bg-slate-700 text-white px-4 py-2 rounded-md text-xs font-bold uppercase">Apply</button>
+</div>
+</div>
+</div>
+<!-- Warehouse Info Card -->
+<div class="bg-slate-900 text-white p-6 rounded-xl overflow-hidden relative">
+<div class="relative z-10">
+<h4 class="font-bold mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                                Pro Logistics Tip
+                            </h4>
+<p class="text-slate-400 text-xs leading-relaxed">
+                                Heavy items like cement and rebar are fulfilled from our <strong>Main Warehouse</strong> to ensure the lowest bulk shipping rates.
+                            </p>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-white/5 pointer-events-none">local_shipping</span>
+</div>
+</aside>
+</div>
+<!-- Recently Viewed / Recommendations Placeholder -->
+<section class="mt-16 border-t border-slate-200 dark:border-slate-800 pt-12">
+<h2 class="text-2xl font-black mb-8 text-slate-900 dark:text-white">Complete your project</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="group cursor-pointer">
+<div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-lg mb-4 overflow-hidden relative">
+<div class="absolute inset-0 bg-center bg-cover transition-transform group-hover:scale-105" data-alt="Set of high quality leather work gloves" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDH13YuNz_2GDqirS18LEd129vJTAudxH6oI95BA7JowLg5Po6-b4T4cmPsnZcn2Eiq0VcHpHFc2B5MXqxAm4nZU-6JoXAokRdLWasJ4SovPLrcFU1WuKwEs-DgJb9AN9yRSvN26bO5IYLRuspOupIZTDssDvkETdRmN5tvnoUwgAhpAsy7tFJ8r3JtbrUEi7TZIJfLJoofChXgkGAitVfRR_yzSnbK8B6kUYjCwC7UC0ar9CA1n18c-QNLvxZgY_7iGc0pMZVRZt7f");'></div>
+</div>
+<h4 class="text-slate-900 dark:text-white font-bold text-sm">Pro Leather Work Gloves</h4>
+<p class="text-primary font-bold text-xs mt-1">$18.99</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-lg mb-4 overflow-hidden relative">
+<div class="absolute inset-0 bg-center bg-cover transition-transform group-hover:scale-105" data-alt="Heavy duty safety helmet with visor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUyP1CiO4F8g7JRYH8X02lA-9J6qSol6be2MYuYlPWX3LT8dyyNzT9GlInH7rE7MiyK7quyYttmVxdIMHMhefOryu6H4bFX7YgfrQire0EohqQyjLD7F65l0CP11t_ngjGtuxZWA3gKD38JPgu9yf-TDmRc0Y8F6APL4CT_jXJz-qWaWqrrCcFQCjZ2QWhvLYHG-TnD9-rR3kWHFdEi4aBePQ99yA9eh-pp0kadYX9L2aBDjiVHjiUF_1niH6akYvhkkKSYE7pFpch");'></div>
+</div>
+<h4 class="text-slate-900 dark:text-white font-bold text-sm">Titan Hard Hat - Gen 3</h4>
+<p class="text-primary font-bold text-xs mt-1">$45.00</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-lg mb-4 overflow-hidden relative">
+<div class="absolute inset-0 bg-center bg-cover transition-transform group-hover:scale-105" data-alt="Yellow measuring tape with steel blade" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUYDeEXxYyfczsjb60hRpcIM5nz08-gadOxBBNH-pB9L00tralCNissTTpxGDLUst1J0Wnt4ScZPBaIRAltjTaUHc400MleiPklnZp7zj_HlyHSljY7WI1BYUMmjm1NJ5xkcTtKeygBIVcm6394qbtqDuk8fS7qfuZ_qqcs2uv_OK9-MNN70-ZsjAp-JrWLB21zZegkuw4CYD_OhV0thyD4aV5RiwgGSct3vdUacKbQPzWsbefv9AWp-p4tsM0RgLMM2Yg7cTQB-Gm");'></div>
+</div>
+<h4 class="text-slate-900 dark:text-white font-bold text-sm">Steel Precision Measuring Tape</h4>
+<p class="text-primary font-bold text-xs mt-1">$12.50</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square bg-slate-100 dark:bg-slate-800 rounded-lg mb-4 overflow-hidden relative">
+<div class="absolute inset-0 bg-center bg-cover transition-transform group-hover:scale-105" data-alt="Roll of industrial grade blue painters tape" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBK5XwTxlEbV1LdcNYH0p-8QHlxqeE91zd42C6aQSaLcKZTwTtI6Pv61FmqPmDvxQDmLVguew46HRQTCMLTpOPid5FOfMRb-OvTPdOInM6EGSy6AybkuQxjkd42lix970v6VHEJd-MB5zqAHy8DNpobabfgo8xenpoZiDd_jE2Sftr64cy06psjtyGN2ipio9GM5VXdu6EOfyQ6ZHHa0am8iHrtHTmA_qmdAJdTIJqbh9p065hXMuKJN9nzANz0Cc-eQ67Fz18YQz0n");'></div>
+</div>
+<h4 class="text-slate-900 dark:text-white font-bold text-sm">Industrial Blue Tape (Pack 3)</h4>
+<p class="text-primary font-bold text-xs mt-1">$15.99</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10 mt-20">
+<div class="max-w-[1280px] mx-auto px-6 lg:px-20 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3 text-slate-400">
+<img alt="Ekuase General Supplies Logo" class="h-6 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0uhyBhdKvTm-96rs759b7PpUhqKn8_zl7JGXSJTG5X08LLPaOJ1xUsVzbGXdue4Is9ZNIgcGH7Va7p5Xw_uk8u2uii5BUYnZ7Ut-gOopzaqfzaTZZ0DQAw-HTr7vja4AQh1_gGXRr01zxnY10I8d2gxvrkBe95yP4cqZiaPan-YMH-i3SZddwulAoFj68bX4pbgW_hBeNWhRRPqa1W-pbkBtd3R1Q_7BaJNSBrDXe8Qw3y3avhV4UIEv1DLMawMCPrl0zxs7QnJdV4I"/>
+<span class="text-sm font-bold">© 2024 Ekuase General Supplies Inc.</span>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-400 text-xs hover:text-primary" href="#">Privacy Policy</a>
+<a class="text-slate-400 text-xs hover:text-primary" href="#">Terms of Service</a>
+<a class="text-slate-400 text-xs hover:text-primary" href="#">Support</a>
+</div>
+<div class="flex gap-4">
+<img alt="Ekuase General Supplies Logo" class="h-6 w-auto" src="https://lh3.googleusercontent.com/aida/ADBb0uhyBhdKvTm-96rs759b7PpUhqKn8_zl7JGXSJTG5X08LLPaOJ1xUsVzbGXdue4Is9ZNIgcGH7Va7p5Xw_uk8u2uii5BUYnZ7Ut-gOopzaqfzaTZZ0DQAw-HTr7vja4AQh1_gGXRr01zxnY10I8d2gxvrkBe95yP4cqZiaPan-YMH-i3SZddwulAoFj68bX4pbgW_hBeNWhRRPqa1W-pbkBtd3R1Q_7BaJNSBrDXe8Qw3y3avhV4UIEv1DLMawMCPrl0zxs7QnJdV4I"/>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">public</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">share</span>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

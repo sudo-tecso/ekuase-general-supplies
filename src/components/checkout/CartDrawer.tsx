@@ -28,76 +28,78 @@ export const CartDrawer = () => {
     <div className="fixed inset-0 z-[100] flex justify-end">
       {/* Overlay */}
       <div 
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm animate-in fade-in duration-300"
+        className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-300"
         onClick={() => setIsOpen(false)}
       />
 
       {/* Drawer */}
       <div className="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col animate-in slide-in-from-right duration-500">
-        <div className="p-6 border-b flex items-center justify-between">
+        <div className="p-6 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <ShoppingCart className="w-5 h-5 text-accent" />
-            <h2 className="font-heading font-black uppercase tracking-tighter text-xl">My Cart</h2>
+            <ShoppingCart className="w-6 h-6 text-primary" />
+            <h2 className="font-black uppercase tracking-tighter text-xl text-slate-900">My Cart</h2>
           </div>
-          <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-muted rounded-full transition-colors">
+          <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-400">
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-6 scrollbar-hide">
           {items.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center space-y-6">
-              <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center text-secondary">
-                <ShoppingCart className="w-10 h-10 opacity-20" />
+              <div className="w-24 h-24 bg-slate-50 rounded-full flex items-center justify-center text-slate-200">
+                <ShoppingCart className="w-12 h-12" />
               </div>
               <div>
-                <h3 className="text-xl font-bold font-heading uppercase tracking-tighter">Your cart is empty</h3>
-                <p className="text-secondary text-sm">Looks like you haven't added anything yet.</p>
+                <h3 className="text-xl font-black uppercase tracking-tighter text-slate-900">Your cart is empty</h3>
+                <p className="text-slate-500 text-sm font-medium">Looks like you haven't added any materials yet.</p>
               </div>
-              <Button onClick={() => setIsOpen(false)} className="uppercase font-bold tracking-widest text-xs">
+              <Button onClick={() => setIsOpen(false)} className="bg-slate-900 text-white hover:bg-slate-800 rounded-lg px-8 py-6 h-auto font-black uppercase tracking-tighter">
                 Start Shopping
               </Button>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-8">
               {items.map((item) => (
-                <div key={item.productId} className="flex gap-4 group">
-                  <div className="w-20 h-20 relative rounded-lg overflow-hidden bg-muted flex-shrink-0">
-                    <Image
+                <div key={item.productId} className="flex gap-5 group">
+                  <div className="w-24 h-24 relative rounded-xl overflow-hidden bg-slate-50 border border-slate-100 flex-shrink-0">
+                    <img
                       src={item.image}
                       alt={item.name}
-                      fill
-                      className="object-cover"
+                      className="w-full h-full object-cover transition-transform group-hover:scale-105"
                     />
                   </div>
-                  <div className="flex-1 min-w-0 space-y-1">
-                    <h4 className="font-bold text-sm truncate">{item.name}</h4>
-                    <p className="text-xs text-secondary font-black">{formatCurrency(item.price)}</p>
+                  <div className="flex-1 min-w-0 space-y-2">
+                    <div className="flex justify-between items-start gap-2">
+                      <h4 className="font-black text-sm text-slate-900 leading-tight uppercase tracking-tight line-clamp-2">{item.name}</h4>
+                      <button 
+                        onClick={() => removeItem(item.productId)}
+                        className="text-slate-300 hover:text-red-500 transition-colors shrink-0"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                    <p className="text-sm text-primary font-black">{formatCurrency(item.price)}</p>
                     
                     <div className="flex items-center justify-between pt-2">
-                      <div className="flex items-center border rounded-lg overflow-hidden h-8">
+                      <div className="flex items-center border border-slate-200 rounded-lg overflow-hidden h-9 bg-slate-50">
                         <button 
                           onClick={() => updateQuantity(item.productId, item.quantity - 1)}
-                          className="px-2 hover:bg-muted transition-colors disabled:opacity-50"
+                          className="px-3 hover:bg-white transition-colors disabled:opacity-50 text-slate-600"
                           disabled={item.quantity <= 1}
                         >
                           <Minus className="w-3 h-3" />
                         </button>
-                        <span className="px-3 text-xs font-bold">{item.quantity}</span>
+                        <span className="px-3 text-xs font-black text-slate-900">{item.quantity}</span>
                         <button 
                           onClick={() => updateQuantity(item.productId, item.quantity + 1)}
-                          className="px-2 hover:bg-muted transition-colors disabled:opacity-50"
+                          className="px-3 hover:bg-white transition-colors disabled:opacity-50 text-slate-600"
                           disabled={item.quantity >= item.maxStock}
                         >
                           <Plus className="w-3 h-3" />
                         </button>
                       </div>
-                      <button 
-                        onClick={() => removeItem(item.productId)}
-                        className="text-danger p-2 hover:bg-danger/10 rounded-lg transition-colors"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                      <p className="font-black text-slate-900 text-sm">{formatCurrency(item.price * item.quantity)}</p>
                     </div>
                   </div>
                 </div>
@@ -107,18 +109,22 @@ export const CartDrawer = () => {
         </div>
 
         {items.length > 0 && (
-          <div className="p-6 border-t space-y-4 bg-muted/30">
-            <div className="flex justify-between items-end">
-              <span className="text-secondary text-sm font-bold uppercase tracking-widest">Subtotal</span>
-              <span className="text-2xl font-black text-primary">{formatCurrency(getTotal())}</span>
+          <div className="p-8 border-t border-slate-100 space-y-6 bg-slate-50/50 backdrop-blur-sm">
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-500 text-xs font-black uppercase tracking-widest">Subtotal</span>
+                <span className="text-slate-900 font-black">{formatCurrency(getTotal())}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-500 text-xs font-black uppercase tracking-widest">Logistics estimate</span>
+                <span className="text-slate-900 text-xs font-bold italic">Calculated at checkout</span>
+              </div>
             </div>
-            <p className="text-[10px] text-secondary text-center uppercase tracking-widest">
-              Shipping & taxes calculated at checkout
-            </p>
-            <Link href="/checkout" onClick={() => setIsOpen(false)}>
-              <Button className="w-full h-14 font-black uppercase tracking-tighter text-lg group">
-                Proceed to Checkout
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <div className="h-px bg-slate-100" />
+            <Link href="/cart" onClick={() => setIsOpen(false)}>
+              <Button className="w-full h-16 bg-primary hover:brightness-110 text-background-dark font-black uppercase tracking-tighter text-lg shadow-xl shadow-primary/10 border-0 group rounded-xl">
+                View Shopping Cart
+                <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
           </div>

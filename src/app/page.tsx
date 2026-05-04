@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AddToCartButton } from "@/components/storefront/AddToCartButton";
 
 export default function Home() {
   return (
@@ -100,10 +101,16 @@ export default function Home() {
                   <span className="text-2xl font-black text-slate-900 dark:text-slate-100">$845.00</span>
                   <span className="text-slate-500 text-sm font-medium">/ton</span>
                 </div>
-                <button className="w-full py-3 bg-slate-900 dark:bg-primary text-white dark:text-background-dark font-bold text-sm rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2">
-                  <span className="material-symbols-outlined text-lg">add_shopping_cart</span>
-                  Add to Cart
-                </button>
+                <AddToCartButton 
+                  product={{
+                    id: "tmt-steel-12mm",
+                    name: "TMT Steel Bars (12mm)",
+                    price: 845.00,
+                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCzhASx-Y52B_xRafrJr7vN8G9mYINu5iqiS2GWlO_vWCUX5u2-3xlsZmba8dILWdEsqmFHamz77qECska4dB2o048LwVhtiovvtVL-VbhtFVYkG5ssmhrR-wfhb7VN_pUc6aPtQCr2iWj8_s1q2mUbsIp9TNFujdyYwbwnqQ-DXu2E6YizilDdbyB0KCD0HgoV_F1CqG5UBUieWWMRLqMhe31fsxT1ZKOTSo9Rm3-QwI3o6u3YqPkrdjph-eykK2aRKZ8-snVEOmxn",
+                    stock: 100
+                  }}
+                  className="w-full py-3 bg-slate-900 dark:bg-primary text-white dark:text-background-dark font-bold text-sm rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2"
+                />
               </div>
             </div>
             {/* Product Card 2 */}
@@ -123,10 +130,16 @@ export default function Home() {
                   <span className="text-2xl font-black text-slate-900 dark:text-slate-100">$6.50</span>
                   <span className="text-slate-500 text-sm font-medium">/bag</span>
                 </div>
-                <button className="w-full py-3 bg-slate-900 dark:bg-primary text-white dark:text-background-dark font-bold text-sm rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2">
-                  <span className="material-symbols-outlined text-lg">add_shopping_cart</span>
-                  Add to Cart
-                </button>
+                <AddToCartButton 
+                  product={{
+                    id: "portland-cement-53g",
+                    name: "Portland Cement 53G",
+                    price: 6.50,
+                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAxZi8PkFNkp2TxbToZJK_fKmxzk5kejm7BaWkswSxXk72lBBR3Ks4abRxivim9vgOObTXrOPF6u7kUxje6aMcy8pzHYzXVmFv4jIal48-EZ9u1zzH0X6jt2LlaV6kpB1MzZ5DBjonSqtPsY00nKuDEnCTkYFp127FU6JN4d4CjuTxhpTk-GAewd8NJDrMLQmn4ODalPrujz9S2csHQxu5FlllQVVxhSti9E-oODvwg1cJDo-GnMKB2FeaVdU84b476JUUT3eWHFw_G",
+                    stock: 500
+                  }}
+                  className="w-full py-3 bg-slate-900 dark:bg-primary text-white dark:text-background-dark font-bold text-sm rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2"
+                />
               </div>
             </div>
             {/* Product Card 3 */}
@@ -146,10 +159,16 @@ export default function Home() {
                   <span className="text-2xl font-black text-slate-900 dark:text-slate-100">$2.20</span>
                   <span className="text-slate-500 text-sm font-medium">/sq.ft</span>
                 </div>
-                <button className="w-full py-3 bg-slate-900 dark:bg-primary text-white dark:text-background-dark font-bold text-sm rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2">
-                  <span className="material-symbols-outlined text-lg">add_shopping_cart</span>
-                  Add to Cart
-                </button>
+                <AddToCartButton 
+                  product={{
+                    id: "polished-vitrified-tile",
+                    name: "Polished Vitrified Tile",
+                    price: 2.20,
+                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAnraW_qqO-oqIjn13NhjdOkcEK_XspwlbRnbAhsQzw-fFngKokvQrMNFZzD2Z754dpWyrTjVtObb1sMRoFsC_2hIptBP_1HYeJ8WASZh9JqTJE6BVCiirOC0nXrySEoVjnWFPWDBEpD095Z5F5MIq_l-ntJfgRZjM6Y0pcr8By1tkaJLLzFrPhexaAKH0kCOZOAj7r7NGppZwHbC0vDLbwgHTzpYguX2NEiKVi0CZ5kM6rywuj6c0bVK0GT7Sez_DIitW5Moicnir2",
+                    stock: 1000
+                  }}
+                  className="w-full py-3 bg-slate-900 dark:bg-primary text-white dark:text-background-dark font-bold text-sm rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2"
+                />
               </div>
             </div>
             {/* Product Card 4 */}
@@ -169,10 +188,16 @@ export default function Home() {
                   <span className="text-2xl font-black text-slate-900 dark:text-slate-100">$18.40</span>
                   <span className="text-slate-500 text-sm font-medium">/unit</span>
                 </div>
-                <button className="w-full py-3 bg-slate-900 dark:bg-primary text-white dark:text-background-dark font-bold text-sm rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2">
-                  <span className="material-symbols-outlined text-lg">add_shopping_cart</span>
-                  Add to Cart
-                </button>
+                <AddToCartButton 
+                  product={{
+                    id: "astm-pvc-pipe",
+                    name: "ASTM PVC Pressure Pipe",
+                    price: 18.40,
+                    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBzLl8LkMapTS2GXAWWej9Ojpbh9BhEWMMW8s-kh9sr1TAFXeUjVFznVgs9xK-6Upz6mfvfM3S71tZXUHyTAsDzQyhWcbNH7Za7M5KRuVT2WbQ3u4qpaz3-mTC9UWnTPrICkZTsOpabg-elnfonLPG38Uh0X6qrAanqErBaSK6JEMGXA87LGYkz4eCe2zqQIiWjisLbJcwhaiORS1a0Ddm2NXoaiw3dvGNkvFDL2j0U3bOlfC_dWWnjDs4Uxz-GU3L-pnDuEc4fRJNG",
+                    stock: 5
+                  }}
+                  className="w-full py-3 bg-slate-900 dark:bg-primary text-white dark:text-background-dark font-bold text-sm rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2"
+                />
               </div>
             </div>
           </div>

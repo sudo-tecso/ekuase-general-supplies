@@ -74,106 +74,106 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background pt-32 pb-20">
+    <div className="min-h-screen flex items-center justify-center bg-background-light pt-32 pb-20">
       <div className="container mx-auto px-4 max-w-xl">
-        <div className="bg-white p-8 md:p-12 shadow-2xl rounded-2xl border">
+        <div className="bg-white p-8 md:p-12 shadow-sm rounded-2xl border border-slate-200">
           <div className="text-center mb-10">
-            <h1 className="text-4xl font-heading font-black uppercase tracking-tighter mb-2">Create Account</h1>
-            <p className="text-secondary text-sm">Join Ekuase General Supplies today and start building better.</p>
+            <h1 className="text-4xl font-black uppercase tracking-tighter mb-2 text-slate-900">Create Account</h1>
+            <p className="text-slate-500 text-sm font-medium">Join Ekuase General Supplies today and start building better.</p>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-1">
-              <label className="text-xs font-bold uppercase tracking-widest text-secondary">Full Name</label>
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Full Name</label>
               <Input
                 {...register("name")}
                 placeholder="John Doe"
                 disabled={isLoading}
-                className={errors.name ? "border-danger" : ""}
+                className={cn("border-slate-200 h-12 focus-visible:ring-primary", errors.name && "border-red-500")}
               />
               {errors.name && (
-                <p className="text-[10px] text-danger font-bold uppercase">{errors.name.message}</p>
+                <p className="text-[10px] text-red-500 font-bold uppercase">{errors.name.message}</p>
               )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
-                <label className="text-xs font-bold uppercase tracking-widest text-secondary">Email</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Email</label>
                 <Input
                   {...register("email")}
                   placeholder="john@example.com"
                   type="email"
                   disabled={isLoading}
-                  className={errors.email ? "border-danger" : ""}
+                  className={cn("border-slate-200 h-12 focus-visible:ring-primary", errors.email && "border-red-500")}
                 />
                 {errors.email && (
-                  <p className="text-[10px] text-danger font-bold uppercase">{errors.email.message}</p>
+                  <p className="text-[10px] text-red-500 font-bold uppercase">{errors.email.message}</p>
                 )}
               </div>
               <div className="space-y-1">
-                <label className="text-xs font-bold uppercase tracking-widest text-secondary">Phone</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Phone</label>
                 <Input
                   {...register("phone")}
                   placeholder="0240000000"
                   disabled={isLoading}
-                  className={errors.phone ? "border-danger" : ""}
+                  className={cn("border-slate-200 h-12 focus-visible:ring-primary", errors.phone && "border-red-500")}
                 />
                 {errors.phone && (
-                  <p className="text-[10px] text-danger font-bold uppercase">{errors.phone.message}</p>
+                  <p className="text-[10px] text-red-500 font-bold uppercase">{errors.phone.message}</p>
                 )}
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
-                <label className="text-xs font-bold uppercase tracking-widest text-secondary">Password</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Password</label>
                 <Input
                   {...register("password")}
                   placeholder="••••••••"
                   type="password"
                   disabled={isLoading}
-                  className={errors.password ? "border-danger" : ""}
+                  className={cn("border-slate-200 h-12 focus-visible:ring-primary", errors.password && "border-red-500")}
                 />
                 {errors.password && (
-                  <p className="text-[10px] text-danger font-bold uppercase">{errors.password.message}</p>
+                  <p className="text-[10px] text-red-500 font-bold uppercase">{errors.password.message}</p>
                 )}
               </div>
               <div className="space-y-1">
-                <label className="text-xs font-bold uppercase tracking-widest text-secondary">Confirm Password</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Confirm Password</label>
                 <Input
                   {...register("confirmPassword")}
                   placeholder="••••••••"
                   type="password"
                   disabled={isLoading}
-                  className={errors.confirmPassword ? "border-danger" : ""}
+                  className={cn("border-slate-200 h-12 focus-visible:ring-primary", errors.confirmPassword && "border-red-500")}
                 />
                 {errors.confirmPassword && (
-                  <p className="text-[10px] text-danger font-bold uppercase">{errors.confirmPassword.message}</p>
+                  <p className="text-[10px] text-red-500 font-bold uppercase">{errors.confirmPassword.message}</p>
                 )}
               </div>
             </div>
 
-            <Button className="w-full h-14 text-sm font-bold uppercase tracking-widest" disabled={isLoading}>
-              {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Create Account"}
+            <Button className="w-full h-14 bg-primary text-background-dark font-black uppercase tracking-tighter text-lg hover:brightness-110 shadow-lg shadow-primary/10 rounded-lg border-0" disabled={isLoading}>
+              {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Create Account"}
             </Button>
           </form>
 
-          <div className="relative my-8">
+          <div className="relative my-10">
             <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
+              <span className="w-full border-t border-slate-100" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-muted-foreground font-bold tracking-widest">Or register with</span>
+              <span className="bg-white px-4 text-slate-400 font-black tracking-widest">Or register with</span>
             </div>
           </div>
 
           <Button
             variant="outline"
-            className="w-full h-12 flex gap-3 text-sm font-bold uppercase tracking-widest"
+            className="w-full h-14 flex gap-3 text-sm font-black uppercase tracking-widest border-2 border-slate-100 hover:bg-slate-50 hover:border-slate-200 rounded-lg"
             onClick={() => signIn("google", { callbackUrl: "/customer/dashboard" })}
             disabled={isLoading}
           >
-            <svg className="w-4 h-4" viewBox="0 0 24 24">
+            <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                 fill="#4285F4"
@@ -194,9 +194,9 @@ export default function RegisterPage() {
             Google
           </Button>
 
-          <p className="mt-8 text-center text-xs text-secondary">
+          <p className="mt-10 text-center text-xs text-slate-500 font-medium">
             Already have an account?{" "}
-            <Link href="/login" className="text-accent font-bold hover:underline">
+            <Link href="/login" className="text-primary font-black hover:underline ml-1">
               Login here
             </Link>
           </p>

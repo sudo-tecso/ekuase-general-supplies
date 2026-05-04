@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
-import { useCartStore } from "@/store/useCartStore";
+import { useCartStore } from "@/store/cartStore";
 
 export const Navbar = () => {
   const { data: session } = useSession();
-  const cartItems = useCartStore((state) => state.items);
-  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  const totalItems = useCartStore((state) => state.getItemCount());
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 px-4 md:px-20 py-4">
@@ -26,15 +25,17 @@ export const Navbar = () => {
           <Link className="text-sm font-semibold hover:text-primary transition-colors" href="#">Track Order</Link>
         </nav>
         <div className="flex items-center gap-4 shrink-0">
-          <button className="flex items-center justify-center rounded-lg h-10 px-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition-colors">
-            <span className="material-symbols-outlined text-[20px] mr-2">shopping_cart</span>
-            <span className="text-sm font-bold">Cart</span>
-            {totalItems > 0 && (
-              <span className="ml-1 bg-primary text-background-dark text-[10px] px-1.5 py-0.5 rounded-full">
-                {totalItems}
-              </span>
-            )}
-          </button>
+          <Link href="/cart">
+            <button className="flex items-center justify-center rounded-lg h-10 px-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition-colors">
+              <span className="material-symbols-outlined text-[20px] mr-2">shopping_cart</span>
+              <span className="text-sm font-bold">Cart</span>
+              {totalItems > 0 && (
+                <span className="ml-1 bg-primary text-background-dark text-[10px] px-1.5 py-0.5 rounded-full">
+                  {totalItems}
+                </span>
+              )}
+            </button>
+          </Link>
           {session ? (
             <button onClick={() => signOut()} className="flex items-center justify-center rounded-lg h-10 px-5 bg-slate-900 text-white hover:brightness-110 transition-all">
               <span className="text-sm font-bold">Sign Out</span>
