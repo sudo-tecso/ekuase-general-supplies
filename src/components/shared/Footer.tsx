@@ -1,62 +1,66 @@
 import Link from "next/link";
-import { Logo } from "./Logo";
-import { APP_NAME } from "@/constants";
 
 export const Footer = () => {
   return (
-    <footer className="bg-primary text-white pt-16 pb-8">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
-          <div className="space-y-4">
-            <Link href="/">
-              <Logo size="sm" />
-            </Link>
-            <p className="text-secondary-foreground/60 text-sm leading-relaxed">
-              Ghana's premier platform for construction materials and verified tradespeople. 
-              Quality building starts here.
-            </p>
+    <footer className="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-16 px-4 md:px-20">
+      <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="space-y-6">
+          <div className="flex items-center gap-3">
+            <div className="size-10 bg-white rounded flex items-center justify-center overflow-hidden">
+              <img alt="Ekuase General Supplies Logo" className="w-full h-full object-contain" src="/logo.png"/>
+            </div>
+            <h2 className="text-xl font-black tracking-tight uppercase">Ekuase General Supplies</h2>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-heading font-bold mb-6 text-accent uppercase tracking-widest text-xs">Quick Links</h4>
-            <ul className="space-y-3 text-sm text-secondary-foreground/80">
-              <li><Link href="/products" className="hover:text-accent transition-colors">Browse Products</Link></li>
-              <li><Link href="/services" className="hover:text-accent transition-colors">Find Tradespeople</Link></li>
-              <li><Link href="/track-order" className="hover:text-accent transition-colors">Track Order</Link></li>
-              <li><Link href="/about" className="hover:text-accent transition-colors">About Us</Link></li>
-            </ul>
-          </div>
-
-          {/* Categories */}
-          <div>
-            <h4 className="font-heading font-bold mb-6 text-accent uppercase tracking-widest text-xs">Categories</h4>
-            <ul className="space-y-3 text-sm text-secondary-foreground/80">
-              <li><Link href="/category/cement" className="hover:text-accent transition-colors">Cement & Concrete</Link></li>
-              <li><Link href="/category/steel" className="hover:text-accent transition-colors">Structural Steel</Link></li>
-              <li><Link href="/category/roofing" className="hover:text-accent transition-colors">Roofing Materials</Link></li>
-              <li><Link href="/category/tools" className="hover:text-accent transition-colors">Hardware & Tools</Link></li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-heading font-bold mb-6 text-accent uppercase tracking-widest text-xs">Contact Us</h4>
-            <ul className="space-y-3 text-sm text-secondary-foreground/80">
-              <li>Apese-Ayikuma, Ghana</li>
-              <li>+233 55 583 5876</li>
-              <li>ekuasegeneralsupplies@gmail.com</li>
-            </ul>
+          <p className="text-slate-500 text-sm leading-relaxed">Leading provider of industrial-grade building materials for enterprise-level construction projects across North America.</p>
+          <div className="flex gap-4">
+            <div className="size-10 bg-slate-100 dark:bg-slate-900 rounded-lg flex items-center justify-center text-slate-500 hover:text-primary transition-colors cursor-pointer">
+              <span className="material-symbols-outlined">share</span>
+            </div>
+            <div className="size-10 bg-slate-100 dark:bg-slate-900 rounded-lg flex items-center justify-center text-slate-500 hover:text-primary transition-colors cursor-pointer">
+              <span className="material-symbols-outlined">mail</span>
+            </div>
+            <div className="size-10 bg-slate-100 dark:bg-slate-900 rounded-lg flex items-center justify-center text-slate-500 hover:text-primary transition-colors cursor-pointer">
+              <span className="material-symbols-outlined">rss_feed</span>
+            </div>
           </div>
         </div>
-
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-secondary-foreground/40">
-          <p>© {new Date().getFullYear()} {APP_NAME}. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-          </div>
+        <div>
+          <h4 className="font-bold text-slate-900 dark:text-white mb-6 uppercase text-xs tracking-widest">Materials</h4>
+          <ul className="space-y-4 text-sm font-medium text-slate-500">
+            <li><Link className="hover:text-primary" href="#">Steel & Rebar</Link></li>
+            <li><Link className="hover:text-primary" href="#">Concrete & Cement</Link></li>
+            <li><Link className="hover:text-primary" href="#">Piping & Plumbing</Link></li>
+            <li><Link className="hover:text-primary" href="#">Flooring & Tiles</Link></li>
+            <li><Link className="hover:text-primary" href="#">Electrical Systems</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-bold text-slate-900 dark:text-white mb-6 uppercase text-xs tracking-widest">Company</h4>
+          <ul className="space-y-4 text-sm font-medium text-slate-500">
+            <li><Link className="hover:text-primary" href="#">About Ekuase General Supplies</Link></li>
+            <li><Link className="hover:text-primary" href="#">Warehouse Network</Link></li>
+            <li><Link className="hover:text-primary" href="#">Logistics API</Link></li>
+            <li><Link className="hover:text-primary" href="#">Enterprise Solutions</Link></li>
+            <li><Link className="hover:text-primary" href="#">Careers</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-bold text-slate-900 dark:text-white mb-6 uppercase text-xs tracking-widest">Support</h4>
+          <ul className="space-y-4 text-sm font-medium text-slate-500">
+            <li><Link className="hover:text-primary" href="#">Track Bulk Order</Link></li>
+            <li><Link className="hover:text-primary" href="#">Shipping Policy</Link></li>
+            <li><Link className="hover:text-primary" href="#">Warehouse Pickup</Link></li>
+            <li><Link className="hover:text-primary" href="#">Contact Support</Link></li>
+            <li><Link className="hover:text-primary" href="#">FAQ</Link></li>
+          </ul>
+        </div>
+      </div>
+      <div className="max-w-[1440px] mx-auto mt-16 pt-8 border-t border-slate-100 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="text-xs text-slate-400">© 2024 Ekuase General Supplies Industrial Logistics Inc. All rights reserved.</p>
+        <div className="flex gap-8 text-xs text-slate-400">
+          <Link className="hover:text-primary" href="#">Privacy Policy</Link>
+          <Link className="hover:text-primary" href="#">Terms of Service</Link>
+          <Link className="hover:text-primary" href="#">Accessibility</Link>
         </div>
       </div>
     </footer>

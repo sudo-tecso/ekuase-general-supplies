@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,12 +10,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        "primary": "#f49d25",
+        "background-light": "#f8f7f5",
+        "background-dark": "#221a10",
         background: "var(--background)",
         foreground: "var(--foreground)",
-        primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
-        },
         secondary: {
           DEFAULT: "var(--secondary)",
           foreground: "var(--secondary-foreground)",
@@ -51,6 +51,7 @@ const config: Config = {
       fontFamily: {
         heading: ["var(--font-syne)", "sans-serif"],
         sans: ["var(--font-dm-sans)", "sans-serif"],
+        display: ["var(--font-inter)", "sans-serif"],
       },
     },
   },

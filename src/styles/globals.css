@@ -3,36 +3,36 @@
 @tailwind utilities;
 
 :root {
-  --background: #F8F5F0;
-  --foreground: #1a1a2e;
+  --background: #FFFFFF;
+  --foreground: #111827;
   
-  --primary: #1a1a2e;
-  --primary-foreground: #F8F5F0;
+  --primary: #F3A01D; /* Amber accent */
+  --primary-foreground: #FFFFFF;
   
-  --accent: #E8500A;
-  --accent-foreground: #ffffff;
+  --accent: #F3A01D;
+  --accent-foreground: #FFFFFF;
   
-  --logo-gold: #FFB01F;
+  --logo-gold: #F3A01D;
   --logo-black: #000000;
   
-  --secondary: #8A8A8A;
-  --secondary-foreground: #ffffff;
+  --secondary: #6B7280; /* Gray text */
+  --secondary-foreground: #FFFFFF;
   
-  --muted: #e5e5e5;
-  --muted-foreground: #8A8A8A;
+  --muted: #F3F4F6; /* Light gray background for sections */
+  --muted-foreground: #6B7280;
   
-  --success: #2ECC71;
+  --success: #10B981;
   --success-foreground: #ffffff;
   
-  --danger: #ef4444;
+  --danger: #EF4444;
   --danger-foreground: #ffffff;
   
-  --card: #ffffff;
-  --card-foreground: #1a1a2e;
+  --card: #FFFFFF;
+  --card-foreground: #111827;
   
-  --border: #e2e2e2;
-  --input: #f1f1f1;
-  --ring: #E8500A;
+  --border: #E5E7EB;
+  --input: #F9FAFB;
+  --ring: #F3A01D;
   
   --radius: 0.5rem;
 }
@@ -42,7 +42,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -52,9 +52,9 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:opacity-90 px-4 py-2 rounded-md transition-colors;
+    @apply bg-primary text-primary-foreground hover:opacity-90 px-4 py-2 rounded-md transition-colors font-medium;
   }
   .btn-accent {
-    @apply bg-accent text-accent-foreground hover:opacity-90 px-4 py-2 rounded-md transition-colors;
+    @apply bg-accent text-accent-foreground hover:opacity-90 px-4 py-2 rounded-md transition-colors font-medium;
   }
 }
