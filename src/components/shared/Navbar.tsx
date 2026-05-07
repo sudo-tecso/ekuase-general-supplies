@@ -20,8 +20,8 @@ export const Navbar = () => {
         <nav className="hidden lg:flex items-center gap-8 flex-1 justify-center">
           <Link className="text-sm font-semibold hover:text-primary transition-colors" href="#">Materials</Link>
           <Link className="text-sm font-semibold hover:text-primary transition-colors" href="#">Warehouses</Link>
-          <Link className="text-sm font-semibold hover:text-primary transition-colors" href="#">Bulk Orders</Link>
-          <Link className="text-sm font-semibold hover:text-primary transition-colors" href="#">Logistics</Link>
+          <Link className="text-sm font-semibold hover:text-primary transition-colors" href="#">Hire Professionals</Link>
+          <Link className="text-sm font-semibold hover:text-primary transition-colors" href="#">Products</Link>
           <Link className="text-sm font-semibold hover:text-primary transition-colors" href="#">Track Order</Link>
         </nav>
         <div className="flex items-center gap-4 shrink-0">

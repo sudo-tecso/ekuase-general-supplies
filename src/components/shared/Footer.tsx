@@ -39,7 +39,7 @@ export const Footer = () => {
           <ul className="space-y-4 text-sm font-medium text-slate-500">
             <li><Link className="hover:text-primary" href="#">About Ekuase General Supplies</Link></li>
             <li><Link className="hover:text-primary" href="#">Warehouse Network</Link></li>
-            <li><Link className="hover:text-primary" href="#">Logistics API</Link></li>
+            <li><Link className="hover:text-primary" href="#">Products API</Link></li>
             <li><Link className="hover:text-primary" href="#">Enterprise Solutions</Link></li>
             <li><Link className="hover:text-primary" href="#">Careers</Link></li>
           </ul>
@@ -47,7 +47,7 @@ export const Footer = () => {
         <div>
           <h4 className="font-bold text-slate-900 dark:text-white mb-6 uppercase text-xs tracking-widest">Support</h4>
           <ul className="space-y-4 text-sm font-medium text-slate-500">
-            <li><Link className="hover:text-primary" href="#">Track Bulk Order</Link></li>
+            <li><Link className="hover:text-primary" href="#">Track Order</Link></li>
             <li><Link className="hover:text-primary" href="#">Shipping Policy</Link></li>
             <li><Link className="hover:text-primary" href="#">Warehouse Pickup</Link></li>
             <li><Link className="hover:text-primary" href="#">Contact Support</Link></li>
@@ -56,7 +56,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="max-w-[1440px] mx-auto mt-16 pt-8 border-t border-slate-100 dark:border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-xs text-slate-400">© 2024 Ekuase General Supplies Industrial Logistics Inc. All rights reserved.</p>
+        <p className="text-xs text-slate-400">© 2024 Ekuase General Supplies Industrial Products Inc. All rights reserved.</p>
         <div className="flex gap-8 text-xs text-slate-400">
           <Link className="hover:text-primary" href="#">Privacy Policy</Link>
           <Link className="hover:text-primary" href="#">Terms of Service</Link>
