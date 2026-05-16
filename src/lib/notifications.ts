@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || "dummy_key_for_build");
 const FROM_ORDERS = "Ekuase General Supplies <orders@ekuasegs.com>";
 const FROM_TICKETS = "Ekuase General Supplies <tickets@ekuasegs.com>";
 
