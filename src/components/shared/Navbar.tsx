@@ -3,13 +3,20 @@
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { useCartStore } from "@/store/cartStore";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
   const { data: session } = useSession();
   const totalItems = useCartStore((state) => state.getItemCount());
+  const pathname = usePathname();
+  const hasSidebar = pathname?.startsWith("/customer") || pathname?.startsWith("/admin");
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 px-4 md:px-20 py-4">
+    <header className={cn(
+      "sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 px-4 md:px-20 py-4 transition-all",
+      hasSidebar && "lg:pl-[20rem]" // 72 is 18rem + 2rem padding = 20rem to match the sidebar width and original padding
+    )}>
       <div className="max-w-[1440px] mx-auto flex items-center justify-between gap-8">
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <div className="size-10 bg-white rounded flex items-center justify-center overflow-hidden">

@@ -1,8 +1,18 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 export const Footer = () => {
+  const pathname = usePathname();
+  const hasSidebar = pathname?.startsWith("/customer") || pathname?.startsWith("/admin");
+
   return (
-    <footer className="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-16 px-4 md:px-20">
+    <footer className={cn(
+      "bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-16 px-4 md:px-20 transition-all",
+      hasSidebar && "lg:pl-[20rem]"
+    )}>
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="space-y-6">
           <div className="flex items-center gap-3">

@@ -87,23 +87,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "SKU already exists" }, { status: 400 });
     }
 
-    const product = await prisma.$transaction(async (tx) => {
-      const p = await tx.product.create({
-        data: {
-          ...validatedData,
-          category: "", // Legacy field in schema, but CategoryId is relation
-        },
-      });
+    const product = await prisma.product.create({
+      data: {
+        ...validatedData,
+        category: "", // Legacy field in schema
+      },
+    });
 
-      await createAuditLog({
-        adminId: session.user.id!,
-        action: "CREATE_PRODUCT",
-        entityType: "PRODUCT",
-        entityId: p.id,
-        details: validatedData,
-      });
-
-      return p;
+    await createAuditLog({
+      adminId: session.user.id!,
+      action: "CREATE_PRODUCT",
+      entityType: "PRODUCT",
+      entityId: product.id,
+      details: validatedData,
     });
 
     return NextResponse.json(product, { status: 201 });
@@ -112,6 +108,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: error.issues }, { status: 400 });
     }
     console.error("Failed to create product:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : String(error) }, { status: 500 });
   }
 }
