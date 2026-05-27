@@ -55,12 +55,21 @@ export default function CheckoutPage() {
     },
   });
 
+  // Pre-fill delivery form from saved profile (including address)
   useEffect(() => {
-    if (session?.user) {
-      form.setValue("fullName", session.user.name || "");
-      form.setValue("phone", (session.user as any)?.phone || "");
-    }
-  }, [session, form]);
+    if (!session?.user) return;
+    axios.get("/api/customer/profile")
+      .then(({ data }) => {
+        form.setValue("fullName", data.name || session.user?.name || "");
+        form.setValue("phone", data.phone || (session.user as any)?.phone || "");
+        if (data.address) form.setValue("address", data.address);
+      })
+      .catch(() => {
+        form.setValue("fullName", session.user?.name || "");
+        form.setValue("phone", (session.user as any)?.phone || "");
+      });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session]);
 
   useEffect(() => {
     if (items.length === 0 && step < 4) router.push("/products");
@@ -127,14 +136,23 @@ export default function CheckoutPage() {
     }
   };
 
+  // Called only when step 2 delivery form passes validation
   const onSubmit = async (values: DeliveryValues) => {
-    if (step === 2) setSavedDelivery(values);
-    if (step < 4) {
-      setStep((s) => s + 1);
-      return;
-    }
-    // Step 4: final submission
-    await handleFinalSubmit(savedDelivery || values);
+    setSavedDelivery(values);
+    // Background-save address to profile so it pre-fills next time
+    axios.put("/api/customer/profile", {
+      name: values.fullName,
+      phone: values.phone,
+      address: values.address,
+    }).catch(() => {}); // non-blocking
+    setStep(3);
+  };
+
+  // Direct step advance for steps that don't need delivery validation
+  const handleContinue = () => {
+    if (step === 1) { setStep(2); return; }
+    if (step === 3) { setStep(4); return; }
+    if (step === 4) { handleFinalSubmit(savedDelivery || form.getValues()); }
   };
 
   const currentDelivery = savedDelivery || form.getValues();
@@ -442,14 +460,19 @@ export default function CheckoutPage() {
 
               <div className="flex flex-col gap-3">
                 <Button
-                  type="submit"
+                  type={step === 2 ? "submit" : "button"}
+                  onClick={step !== 2 ? handleContinue : undefined}
                   disabled={isSubmitting}
                   className="w-full bg-primary hover:brightness-110 text-slate-900 py-6 rounded-xl font-black text-base shadow-md border-0 transition-all"
                 >
                   {isSubmitting ? (
                     <Loader2 className="animate-spin w-5 h-5" />
-                  ) : step < 4 ? (
-                    step === 3 ? "Review Order →" : `Continue to ${STEPS[step].label} →`
+                  ) : step === 1 ? (
+                    `Continue to Delivery →`
+                  ) : step === 2 ? (
+                    `Continue to Payment →`
+                  ) : step === 3 ? (
+                    `Review Order →`
                   ) : paymentMethod === "ONLINE" ? (
                     `Pay ${formatCurrency(finalTotal)} with Paystack`
                   ) : (
