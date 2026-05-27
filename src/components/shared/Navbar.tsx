@@ -32,16 +32,14 @@ export const Navbar = () => {
           <Link className="text-sm font-semibold hover:text-primary transition-colors" href="/orders">Track Order</Link>
         </nav>
         <div className="flex items-center gap-4 shrink-0">
-          <Link href="/cart">
-            <button className="flex items-center justify-center rounded-lg h-10 px-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition-colors">
-              <span className="material-symbols-outlined text-[20px] mr-2">shopping_cart</span>
-              <span className="text-sm font-bold">Cart</span>
-              {totalItems > 0 && (
-                <span className="ml-1 bg-primary text-background-dark text-[10px] px-1.5 py-0.5 rounded-full">
-                  {totalItems}
-                </span>
-              )}
-            </button>
+          <Link href="/cart" className="flex items-center justify-center rounded-lg h-10 px-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 transition-colors">
+            <span className="material-symbols-outlined text-[20px] mr-2">shopping_cart</span>
+            <span className="text-sm font-bold">Cart</span>
+            {totalItems > 0 && (
+              <span className="ml-1 bg-primary text-background-dark text-[10px] px-1.5 py-0.5 rounded-full">
+                {totalItems}
+              </span>
+            )}
           </Link>
           {session ? (
             <button onClick={() => signOut()} className="flex items-center justify-center rounded-lg h-10 px-5 bg-slate-900 text-white hover:brightness-110 transition-all">
@@ -49,15 +47,11 @@ export const Navbar = () => {
             </button>
           ) : (
             <div className="flex items-center gap-2">
-              <Link href="/login">
-                <button className="flex items-center justify-center rounded-lg h-10 px-5 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
-                  <span className="text-sm font-bold">Sign In</span>
-                </button>
+              <Link href="/login" className="flex items-center justify-center rounded-lg h-10 px-5 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                <span className="text-sm font-bold">Sign In</span>
               </Link>
-              <Link href="/register">
-                <button className="flex items-center justify-center rounded-lg h-10 px-5 bg-primary text-background-dark hover:brightness-110 transition-all">
-                  <span className="text-sm font-bold">Sign Up</span>
-                </button>
+              <Link href="/register" className="flex items-center justify-center rounded-lg h-10 px-5 bg-primary text-background-dark hover:brightness-110 transition-all">
+                <span className="text-sm font-bold">Sign Up</span>
               </Link>
             </div>
           )}
