@@ -57,6 +57,7 @@ model User {
   name          String?
   email         String?        @unique
   phone         String?        @unique
+  address       String?
   role          UserRole       @default(CUSTOMER)
   passwordHash  String?
   createdAt     DateTime       @default(now())

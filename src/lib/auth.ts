@@ -66,6 +66,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.role = user.role;
         // @ts-ignore
         token.phone = user.phone;
+        // @ts-ignore
+        token.address = user.address;
       }
       
       // Handle session updates (e.g. after profile update)
@@ -82,6 +84,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session.user.role = token.role;
         // @ts-ignore
         session.user.phone = token.phone;
+        // @ts-ignore
+        session.user.address = token.address;
       }
       return session;
     },

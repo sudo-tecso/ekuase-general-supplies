@@ -7,9 +7,9 @@ import * as z from "zod";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Card } from "@/components/ui/Card";
-import { User, Phone, MapPin, ShieldCheck, Camera, Loader2 } from "lucide-react";
+import { User, ShieldCheck, Camera, Loader2 } from "lucide-react";
 import { toast } from "react-hot-toast";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const profileSchema = z.object({
@@ -34,28 +34,55 @@ export default function ProfilePage() {
   const { data: session, update } = useSession();
   const [isSaving, setIsSaving] = useState(false);
   const [isChangingPassword, setIsChangingPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const profileForm = useForm<ProfileValues>({
     resolver: zodResolver(profileSchema),
-    defaultValues: {
-      name: session?.user?.name || "",
-      phone: (session?.user as any)?.phone || "",
-      address: (session?.user as any)?.address || "",
-    },
+    defaultValues: { name: "", phone: "", address: "" },
   });
 
   const passwordForm = useForm<PasswordValues>({
     resolver: zodResolver(passwordSchema),
   });
 
+  // Fetch the latest profile data from the database on mount
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await axios.get("/api/customer/profile");
+        const { name, phone, address } = res.data;
+        profileForm.reset({
+          name: name || "",
+          phone: phone || "",
+          address: address || "",
+        });
+      } catch (error) {
+        console.error("Failed to fetch profile:", error);
+        // Fallback to session data
+        profileForm.reset({
+          name: session?.user?.name || "",
+          phone: (session?.user as any)?.phone || "",
+          address: (session?.user as any)?.address || "",
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProfile();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const onUpdateProfile = async (values: ProfileValues) => {
     setIsSaving(true);
     try {
-      await axios.patch("/api/users/me", values);
-      await update(); // Sync session
+      await axios.put("/api/customer/profile", values);
+      // Sync the JWT session so the navbar and other components reflect changes
+      await update({ user: { name: values.name, phone: values.phone, address: values.address } });
       toast.success("Profile updated successfully!");
-    } catch (error) {
-      toast.error("Failed to update profile");
+    } catch (error: any) {
+      const serverError = error.response?.data?.error;
+      toast.error(serverError || "Failed to update profile");
     } finally {
       setIsSaving(false);
     }
@@ -100,28 +127,43 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            <form onSubmit={profileForm.handleSubmit(onUpdateProfile)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Full Name</label>
-                  <Input {...profileForm.register("name")} className="border-slate-200 focus-visible:ring-primary h-12" />
+            {isLoading ? (
+              <div className="flex items-center justify-center py-8">
+                <Loader2 className="w-6 h-6 animate-spin text-slate-400" />
+              </div>
+            ) : (
+              <form onSubmit={profileForm.handleSubmit(onUpdateProfile)} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Full Name</label>
+                    <Input {...profileForm.register("name")} className="border-slate-200 focus-visible:ring-primary h-12" />
+                    {profileForm.formState.errors.name && (
+                      <p className="text-xs text-red-500">{profileForm.formState.errors.name.message}</p>
+                    )}
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Phone Number</label>
+                    <Input {...profileForm.register("phone")} className="border-slate-200 focus-visible:ring-primary h-12" />
+                    {profileForm.formState.errors.phone && (
+                      <p className="text-xs text-red-500">{profileForm.formState.errors.phone.message}</p>
+                    )}
+                  </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Phone Number</label>
-                  <Input {...profileForm.register("phone")} className="border-slate-200 focus-visible:ring-primary h-12" />
+                  <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Default Delivery Address</label>
+                  <textarea 
+                    {...profileForm.register("address")}
+                    className="w-full min-h-[100px] p-4 rounded-xl border border-slate-200 focus:border-primary outline-none focus:ring-1 focus:ring-primary transition-all resize-none font-medium text-sm"
+                  />
+                  {profileForm.formState.errors.address && (
+                    <p className="text-xs text-red-500">{profileForm.formState.errors.address.message}</p>
+                  )}
                 </div>
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-500">Default Delivery Address</label>
-                <textarea 
-                  {...profileForm.register("address")}
-                  className="w-full min-h-[100px] p-4 rounded-xl border border-slate-200 focus:border-primary outline-none focus:ring-1 focus:ring-primary transition-all resize-none font-medium text-sm"
-                />
-              </div>
-              <Button disabled={isSaving} className="h-14 px-10 font-black uppercase tracking-tighter bg-primary text-background-dark hover:brightness-110 rounded-lg">
-                {isSaving ? <Loader2 className="animate-spin w-5 h-5" /> : "Save Changes"}
-              </Button>
-            </form>
+                <Button disabled={isSaving} className="h-14 px-10 font-black uppercase tracking-tighter bg-primary text-background-dark hover:brightness-110 rounded-lg">
+                  {isSaving ? <Loader2 className="animate-spin w-5 h-5" /> : "Save Changes"}
+                </Button>
+              </form>
+            )}
           </Card>
 
           {/* Password Form */}
@@ -145,6 +187,9 @@ export default function ProfilePage() {
                   <Input type="password" {...passwordForm.register("confirmPassword")} className="border-slate-200 focus-visible:ring-primary h-12" />
                 </div>
               </div>
+              {passwordForm.formState.errors.confirmPassword && (
+                <p className="text-xs text-red-500">{passwordForm.formState.errors.confirmPassword.message}</p>
+              )}
               <Button disabled={isChangingPassword} className="h-14 px-10 font-black uppercase tracking-tighter bg-slate-900 text-white hover:brightness-110 rounded-lg">
                 {isChangingPassword ? <Loader2 className="animate-spin w-5 h-5" /> : "Update Password"}
               </Button>
