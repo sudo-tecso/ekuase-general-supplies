@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { APP_NAME, APP_DESCRIPTION } from "@/constants";
 import { Providers } from "@/components/Providers";
 import { Navbar } from "@/components/shared/Navbar";
+import { auth } from "@/lib/auth";
 import { Footer } from "@/components/shared/Footer";
 import { CartDrawer } from "@/components/checkout/CartDrawer";
 import "@uploadthing/react/styles.css";
@@ -21,11 +22,12 @@ export const metadata: Metadata = {
   description: "Marketplace for construction materials and professional services.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
     <html lang="en" className="light">
       <head>
@@ -35,7 +37,7 @@ export default function RootLayout({
         className={`${inter.variable} bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased`}
       >
         <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-        <Providers>
+        <Providers session={session}>
           <Navbar />
           <CartDrawer />
           <main className="min-h-screen">
